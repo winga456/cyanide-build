@@ -64,10 +64,10 @@ endif # CALLED_FROM_SETUP
 
 ifneq ($(PRINT_BUILD_CONFIG),)
 HOST_OS_EXTRA:=$(shell python -c "import platform; print(platform.platform())")
-$(info ============================================)
+$(info ====================================================================)
 $(info   PLATFORM_VERSION_CODENAME=$(PLATFORM_VERSION_CODENAME))
 $(info   PLATFORM_VERSION=$(PLATFORM_VERSION))
-$(info   CM_VERSION=$(CM_VERSION))
+$(info   VRTOXIN_VERSION=$(VRTOXIN_VERSION))
 $(info   TARGET_PRODUCT=$(TARGET_PRODUCT))
 $(info   TARGET_BUILD_VARIANT=$(TARGET_BUILD_VARIANT))
 $(info   TARGET_BUILD_TYPE=$(TARGET_BUILD_TYPE))
@@ -75,18 +75,70 @@ $(info   TARGET_BUILD_APPS=$(TARGET_BUILD_APPS))
 $(info   TARGET_ARCH=$(TARGET_ARCH))
 $(info   TARGET_ARCH_VARIANT=$(TARGET_ARCH_VARIANT))
 $(info   TARGET_CPU_VARIANT=$(TARGET_CPU_VARIANT))
-$(info   TARGET_2ND_ARCH=$(TARGET_2ND_ARCH))
-$(info   TARGET_2ND_ARCH_VARIANT=$(TARGET_2ND_ARCH_VARIANT))
-$(info   TARGET_2ND_CPU_VARIANT=$(TARGET_2ND_CPU_VARIANT))
 $(info   HOST_ARCH=$(HOST_ARCH))
 $(info   HOST_OS=$(HOST_OS))
 $(info   HOST_OS_EXTRA=$(HOST_OS_EXTRA))
 $(info   HOST_BUILD_TYPE=$(HOST_BUILD_TYPE))
 $(info   BUILD_ID=$(BUILD_ID))
 $(info   OUT_DIR=$(OUT_DIR))
-ifeq ($(CYNGN_TARGET),true)
-$(info   CYNGN_TARGET=$(CYNGN_TARGET))
-$(info   CYNGN_FEATURES=$(CYNGN_FEATURES))
+$(info ====================================================================)
+$(info VRToxin Build Optimizations Info)
+$(info ====================================================================)
+ifdef    TARGET_VRTOXIN_ROM
+$(info   TARGET_VRTOXIN_ROM=$(TARGET_VRTOXIN_ROM))
+else
+$(info   TARGET_VRTOXIN_ROM=4.8)
 endif
-$(info ============================================)
+$(info   TARGET_NDK_GCC_VERSION=$(TARGET_NDK_GCC_VERSION))
+ifdef    TARGET_VRTOXIN_ARM
+$(info   TARGET_VRTOXIN_ARM=$(TARGET_VRTOXIN_ARM))
+else
+$(info   TARGET_KERNEL_TOOLCHAIN=4.8)
+endif
+ifdef    STRICT_ALIASING
+$(info   STRICT_ALIASING=$(STRICT_ALIASING))
+else
+$(info   STRICT_ALIASING=false)
+endif
+ifdef    CLANG_O3
+$(info   CLANG_O3=$(CLANG_O3))
+else
+$(info   CLANG_O3=false)
+endif
+ifdef    GRAPHITE_OPTS
+$(info   GRAPHITE_OPTS=$(GRAPHITE_OPTS))
+else
+$(info   GRAPHITE_OPTS=false)
+endif
+ifdef    USE_O3_OPTIMIZATIONS
+$(info   USE_O3_OPTIMIZATIONS=$(USE_O3_OPTIMIZATIONS))
+else
+$(info   USE_O3_OPTIMIZATIONS=false)
+endif
+ifdef    OFAST_OPTS
+$(info   OFAST_OPTS=$(OFAST_OPTS))
+else
+$(info   OFAST_OPTS=false)
+endif
+ifdef    ENABLE_GCCONLY
+$(info   ENABLE_GCCONLY=$(ENABLE_GCCONLY))
+else
+$(info   ENABLE_GCCONLY=false)
+endif
+ifdef    KRAIT_TUNINGS
+$(info   KRAIT_TUNINGS=$(KRAIT_TUNINGS))
+else
+$(info   KRAIT_TUNINGS=false)
+endif
+ifdef    FLOOP_NEST_OPTIMIZE
+$(info   FLOOP_NEST_OPTIMIZE=$(FLOOP_NEST_OPTIMIZE))
+else
+$(info   FLOOP_NEST_OPTIMIZE=false)
+endif
+ifdef    USE_PIPE
+$(info   USE_PIPE=$(USE_PIPE))
+else
+$(info   USE_PIPE=false)
+endif
+$(info ====================================================================)
 endif

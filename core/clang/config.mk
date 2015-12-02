@@ -20,13 +20,32 @@ LLVM_TBLGEN := $(BUILD_OUT_EXECUTABLES)/llvm-tblgen$(BUILD_EXECUTABLE_SUFFIX)
 
 # Clang flags for all host or target rules
 CLANG_CONFIG_EXTRA_ASFLAGS :=
+ifeq ($(CLANG_O3),true)
+CLANG_CONFIG_EXTRA_CFLAGS := -O3 -Qunused-arguments -Wno-unknown-warning-option
+CLANG_CONFIG_EXTRA_CONLYFLAGS := -std=gnu99
+CLANG_CONFIG_EXTRA_CPPFLAGS := -O3 -Qunused-arguments -Wno-unknown-warning-option -D__compiler_offsetof=__builtin_offsetof
+CLANG_CONFIG_EXTRA_LDFLAGS := -Wl,--sort-common
+else
+ifeq ($(OFAST_OPTS),true)
+CLANG_CONFIG_EXTRA_CFLAGS := -Ofast -Qunused-arguments -Wno-unknown-warning-option
+CLANG_CONFIG_EXTRA_CONLYFLAGS := -std=gnu99
+CLANG_CONFIG_EXTRA_CPPFLAGS := -Ofast -Qunused-arguments -Wno-unknown-warning-option -D__compiler_offsetof=__builtin_offsetof
+CLANG_CONFIG_EXTRA_LDFLAGS :=
+else
 CLANG_CONFIG_EXTRA_CFLAGS :=
 CLANG_CONFIG_EXTRA_CONLYFLAGS := -std=gnu99
 CLANG_CONFIG_EXTRA_CPPFLAGS :=
 CLANG_CONFIG_EXTRA_LDFLAGS :=
+endif
+endif
 
+ifeq ($(OFAST_OPTS),true)
+CLANG_CONFIG_EXTRA_CFLAGS += \
+  -Ofast -Qunused-arguments -Wno-unknown-warning-option -D__compiler_offsetof=__builtin_offsetof
+else
 CLANG_CONFIG_EXTRA_CFLAGS += \
   -D__compiler_offsetof=__builtin_offsetof
+endif
 
 # Help catch common 32/64-bit errors.
 CLANG_CONFIG_EXTRA_CFLAGS += \
