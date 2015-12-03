@@ -1889,7 +1889,7 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
 	   $(if $(OEM_OTA_CONFIG), -o $(OEM_OTA_CONFIG)) \
 	   $(BUILT_TARGET_FILES_PACKAGE) $@
 
-VRTOXIN_TARGET_PACKAGE := $(PRODUCT_OUT)/vrtoxin-$(VRTOXIN_VERSION).zip
+VRTOXIN_TARGET_PACKAGE := $(PRODUCT_OUT)/VRToxin-$(VRTOXIN_VERSION).zip
 
 .PHONY: otapackage vrtoxin
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
@@ -1903,8 +1903,6 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo -e ${CL_BLU}"**********************************************"${CL_BLU}
 	@echo -e ${CL_BLU}""${CL_BLU}
 vrtoxin: otapackage
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(VRTOXIN_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(VRTOXIN_TARGET_PACKAGE) > $(VRTOXIN_TARGET_PACKAGE).md5sum
 	@echo -e ${CL_CYN}"Package Complete: $(VRTOXIN_TARGET_PACKAGE)"${CL_RST}
 # -----------------------------------------------------------------
 # The factory package
