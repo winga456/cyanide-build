@@ -1898,7 +1898,7 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) $(MD5SUM) $(VRTOXIN_TARGET_PACKAGE) > $(VRTOXIN_TARGET_PACKAGE).md5sum
 	@echo -e ${CL_BLU}""${CL_BLU}
 	@echo -e ${CL_BLU}"**********************************************"${CL_BLU}
-	@echo -e ${CL_BLU}"           <%%% VRTOXIN v-1.0 %%%>            "${CL_BLU}
+	@echo -e ${CL_BLU}"           <%%% VRTOXIN v2.0 %%%>            "${CL_BLU}
 	@echo -e ${CL_BLU}"            <%%% Marshmallow %%%>             "${CL_BLU}
 	@echo -e ${CL_BLU}"**********************************************"${CL_BLU}
 	@echo -e ${CL_BLU}""${CL_BLU}
