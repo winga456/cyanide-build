@@ -218,7 +218,7 @@ endif
 	$(hide) TARGET_BUILD_TYPE="$(TARGET_BUILD_VARIANT)" \
 			TARGET_BUILD_FLAVOR="$(TARGET_PRODUCT)-$(TARGET_BUILD_VARIANT)" \
 			TARGET_DEVICE="$(TARGET_VENDOR_DEVICE_NAME)" \
-			VRTOXIN_DEVICE="$(TARGET_DEVICE)" \
+			CYANIDE_DEVICE="$(TARGET_DEVICE)" \
 			PRODUCT_NAME="$(TARGET_VENDOR_PRODUCT_NAME)" \
 			PRODUCT_BRAND="$(PRODUCT_BRAND)" \
 			PRODUCT_DEFAULT_LOCALE="$(call get-default-product-locale,$(PRODUCT_LOCALES))" \
@@ -948,8 +948,8 @@ ifneq ($(OTA_PACKAGE_SIGNING_KEY),)
     PRODUCT_EXTRA_RECOVERY_KEYS := $(DEFAULT_SYSTEM_DEV_CERTIFICATE)
 else
     PRODUCT_EXTRA_RECOVERY_KEYS += \
-        build/target/product/security/vrtoxin \
-        build/target/product/security/vrtoxin-devkey
+        build/target/product/security/cyanide \
+        build/target/product/security/cyanide-devkey
 endif
 
 # Generate a file containing the keys that will be read by the
@@ -1187,7 +1187,7 @@ FULL_SYSTEMIMAGE_DEPS := $(INTERNAL_SYSTEMIMAGE_FILES) $(INTERNAL_USERIMAGES_DEP
 INSTALLED_FILES_FILE := $(PRODUCT_OUT)/installed-files.txt
 $(INSTALLED_FILES_FILE): $(FULL_SYSTEMIMAGE_DEPS)
 	@echo -e ${CL_GRN}"Generating Changelog"${CL_RST}
-	$(hide) ./vendor/vrtoxin/tools/changelog.sh
+	$(hide) ./vendor/cyanide/tools/changelog.sh
 	$(hide) mv $(PRODUCT_OUT)/Changelog.txt $(PRODUCT_OUT)/$(TARGET_PRODUCT)-Changelog.txt
 	@echo Installed file list: $@
 	@mkdir -p $(dir $@)
@@ -1867,7 +1867,7 @@ endif
 ifeq ($(WITH_GMS),true)
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
 else
-ifneq ($(VRTOXIN_BUILD),)
+ifneq ($(CYANIDE_BUILD),)
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := true
 else
     $(INTERNAL_OTA_PACKAGE_TARGET): backuptool := false
@@ -1905,21 +1905,21 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
 	   $(if $(OEM_OTA_CONFIG), -o $(OEM_OTA_CONFIG)) \
 	   $(BUILT_TARGET_FILES_PACKAGE) $@
 
-VRTOXIN_TARGET_PACKAGE := $(PRODUCT_OUT)/$(VRTOXIN_VERSION).zip
+CYANIDE_TARGET_PACKAGE := $(PRODUCT_OUT)/$(CYANIDE_VERSION).zip
 
-.PHONY: otapackage vrtoxin
+.PHONY: otapackage cyanide
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(VRTOXIN_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(VRTOXIN_TARGET_PACKAGE) > $(VRTOXIN_TARGET_PACKAGE).md5sum
+	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CYANIDE_TARGET_PACKAGE)
+	$(hide) $(MD5SUM) $(CYANIDE_TARGET_PACKAGE) > $(CYANIDE_TARGET_PACKAGE).md5sum
 	@echo -e ${CL_BLU}""${CL_BLU}
 	@echo -e ${CL_BLU}"**********************************************"${CL_BLU}
-	@echo -e ${CL_BLU}"           <%%% VRToxin v4.0 %%%>            "${CL_BLU}
-	@echo -e ${CL_BLU}"            <%%% Marshmallow %%%>             "${CL_BLU}
+	@echo -e ${CL_BLU}"           <%%% Cyanide Android %%%>            "${CL_BLU}
+	@echo -e ${CL_BLU}"         <%%% Marshmallow Edition %%%>          "${CL_BLU}
 	@echo -e ${CL_BLU}"**********************************************"${CL_BLU}
 	@echo -e ${CL_BLU}""${CL_BLU}
-vrtoxin: otapackage
-	@echo -e ${CL_CYN}"Package Complete: $(VRTOXIN_TARGET_PACKAGE)"${CL_RST}
+cyanide: otapackage
+	@echo -e ${CL_CYN}"Package Complete: $(CYANIDE_TARGET_PACKAGE)"${CL_RST}
 # -----------------------------------------------------------------
 # The factory package
 

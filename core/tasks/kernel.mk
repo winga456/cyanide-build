@@ -242,11 +242,11 @@ ifeq ($(TARGET_ARCH),arm64)
     ccache =
 endif
 
-ifneq ($(TARGET_VRTOXIN_ARM),)
+ifneq ($(TARGET_CYANIDE_ARM),)
   ifeq ($(HOST_OS),darwin)
-    KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(ANDROID_BUILD_TOP)/prebuilts/gcc/darwin-x86/arm/arm-eabi-$(TARGET_VRTOXIN_ARM)/bin/arm-eabi-"
+    KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(ANDROID_BUILD_TOP)/prebuilts/gcc/darwin-x86/arm/arm-eabi-$(TARGET_CYANIDE_ARM)/bin/arm-eabi-"
   else
-    KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-$(TARGET_VRTOXIN_ARM)/bin/arm-eabi-"
+    KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-$(TARGET_CYANIDE_ARM)/bin/arm-eabi-"
   endif
 else
   KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(ccache) $(KERNEL_TOOLCHAIN_PATH)"

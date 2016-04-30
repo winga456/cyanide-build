@@ -67,7 +67,7 @@ HOST_OS_EXTRA:=$(shell python -c "import platform; print(platform.platform())")
 $(info ====================================================================)
 $(info   PLATFORM_VERSION_CODENAME=$(PLATFORM_VERSION_CODENAME))
 $(info   PLATFORM_VERSION=$(PLATFORM_VERSION))
-$(info   VRTOXIN_VERSION=$(VRTOXIN_VERSION))
+$(info   CYANIDE_VERSION=$(CYANIDE_VERSION))
 $(info   TARGET_PRODUCT=$(TARGET_PRODUCT))
 $(info   TARGET_BUILD_VARIANT=$(TARGET_BUILD_VARIANT))
 $(info   TARGET_BUILD_TYPE=$(TARGET_BUILD_TYPE))
@@ -82,16 +82,16 @@ $(info   HOST_BUILD_TYPE=$(HOST_BUILD_TYPE))
 $(info   BUILD_ID=$(BUILD_ID))
 $(info   OUT_DIR=$(OUT_DIR))
 $(info ====================================================================)
-$(info VRToxin Build Optimizations Info)
+$(info Cyanide Build Optimizations Info)
 $(info ====================================================================)
-ifdef    TARGET_VRTOXIN_ROM
-$(info   TARGET_VRTOXIN_ROM=$(TARGET_VRTOXIN_ROM))
+ifdef    TARGET_CYANIDE_ROM
+$(info   TARGET_CYANIDE_ROM=$(TARGET_CYANIDE_ROM))
 else
-$(info   TARGET_VRTOXIN_ROM=4.8)
+$(info   TARGET_CYANIDE_ROM=4.8)
 endif
 $(info   TARGET_NDK_GCC_VERSION=$(TARGET_NDK_GCC_VERSION))
-ifdef    TARGET_VRTOXIN_ARM
-$(info   TARGET_VRTOXIN_ARM=$(TARGET_VRTOXIN_ARM))
+ifdef    TARGET_CYANIDE_ARM
+$(info   TARGET_CYANIDE_ARM=$(TARGET_CYANIDE_ARM))
 else
 $(info   TARGET_KERNEL_TOOLCHAIN=4.8)
 endif

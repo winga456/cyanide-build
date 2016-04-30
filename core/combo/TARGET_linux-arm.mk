@@ -35,11 +35,11 @@ TARGET_$(combo_2nd_arch_prefix)ARCH_VARIANT := armv5te
 endif
 
 # Decouple NDK library selection with platform compiler version
-$(combo_2nd_arch_prefix)TARGET_NDK_GCC_VERSION := $(TARGET_NDK_VRTOXIN_ROM)
+$(combo_2nd_arch_prefix)TARGET_NDK_GCC_VERSION := $(TARGET_NDK_CYANIDE_ROM)
 
 ifeq ($(strip $(TARGET_GCC_VERSION_EXP)),)
-$(combo_2nd_arch_prefix)TARGET_GCC_VERSION := $(TARGET_VRTOXIN_ROM)
-$(combo_2nd_arch_prefix)TARGET_LEGACY_GCC_VERSION := $(TARGET_LEGACY_VRTOXIN_ROM)
+$(combo_2nd_arch_prefix)TARGET_GCC_VERSION := $(TARGET_CYANIDE_ROM)
+$(combo_2nd_arch_prefix)TARGET_LEGACY_GCC_VERSION := $(TARGET_LEGACY_CYANIDE_ROM)
 else
 $(combo_2nd_arch_prefix)TARGET_GCC_VERSION := $(TARGET_GCC_VERSION_EXP)
 endif

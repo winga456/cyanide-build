@@ -360,7 +360,7 @@ ifdef LOCAL_SDK_VERSION
   endif
 endif
 
-include $(BUILD_SYSTEM)/vrtoxin.mk
+include $(BUILD_SYSTEM)/cyanide.mk
 
 # MinGW spits out warnings about -fPIC even for -fpie?!) being ignored because
 # all code is position independent, and then those warnings get promoted to
