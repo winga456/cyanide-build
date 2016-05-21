@@ -1263,14 +1263,43 @@ class BlockDifference(object):
   def WriteScript(self, script, output_zip, progress=None):
     if not self.src:
       # write the output unconditionally
-      script.Print("Patching %s image unconditionally..." % (self.partition,))
+      script.Print("  We are flashing and infecting your system, please be patient.....  ");
+      script.Print("                                        "); 
+      script.Print("                                        "); 
+      script.Print("      _____               _    __       ");
+      script.Print("     / ___/_ _____ ____  (_)__/ /__     ");
+      script.Print("    / /__/ // / _ `/ _ \/ / _  / -_)    ");
+      script.Print("    \___/\_, /\_,_/_//_/_/\_,_/\__/     ");
+      script.Print("        /___/                           ");
+      script.Print("      ___           __         _    __  ");
+      script.Print("     / _ | ___  ___/ /______  (_)__/ /  ");
+      script.Print("    / __ |/ _ \/ _  / __/ _ \/ / _  /   ");
+      script.Print("   /_/ |_/_//_/\_,_/_/  \___/_/\_,_/    ");
+      script.Print("           __  __                       ");                      
+      script.Print("           \ \/ / __ __ __              ");                      
+      script.Print("            \  / _ \/ // /              ");            
+      script.Print("            /_/\___/\_,_/               ");
+      script.Print("                                        ");
+      script.Print("          __ __                         ");
+      script.Print("         / // /__ __  _____             ");
+      script.Print("        / _  / _ `/ |/ / -_)            ");
+      script.Print("       /_//_/\_,_/|___/\__/             "); 
+      script.Print("                                        ");
+      script.Print("           ___                          ");
+      script.Print("          / _ )___ ___ ___              ");
+      script.Print("         / _  / -_) -_) _ \             ");
+      script.Print("        /____/\__/\__/_//_/             ");
+      script.Print("                                        ");
+      script.Print("   ___       _                      __  ");
+      script.Print("  / _ \___  (_)__ ___  ___  ___ ___/ /  ");
+      script.Print(" / ___/ _ \/ (_-</ _ \/ _ \/ -_) _  /   ");
+      script.Print("/_/   \___/_/___/\___/_//_/\__/\_,_/    ");
     else:
       script.Print("Patching %s image after verification." % (self.partition,))
 
     if progress:
       script.ShowProgress(progress, 0)
     self._WriteUpdate(script, output_zip)
-    self._WritePostInstallVerifyScript(script)
 
   def WriteVerifyScript(self, script):
     partition = self.partition
